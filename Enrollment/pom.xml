@@ -15,10 +15,15 @@
     <packaging>pom</packaging>
 
     <repositories>
-        <repository>
+<!--        <repository>
             <id>api-artifacts</id>
             <url>http://seidevimsart01.ctc.seic.com:8081/artifactory/api-artifacts</url>
+        </repository>-->
+        <repository>
+            <id>api-artifacts</id>
+            <url>http://repo1.maven.org/maven2</url>
         </repository>
+
     </repositories>
 
     <build>

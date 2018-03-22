@@ -20,7 +20,7 @@
      <maven.resources.plugin>3.0.1</maven.resources.plugin>
 
      <!-- Default encoding for all build plugins, avoiding OS specific encoding -->
-     <repository.server.root>http://seidevimsart01.ctc.ddisrupt.com:8081/artifactory</repository.server.root>     
+<!--     <repository.server.root>http://seidevimsart01.ctc.ddisrupt.com:8081/artifactory</repository.server.root>-->     
      <repository.local.home>${HOME}/.m2/repository</repository.local.home>
      <repository.maven.central>http://repo1.maven.org/maven2</repository.maven.central>
      <releases.distribution.url>${repository.server.root}/api-artifacts</releases.distribution.url>
