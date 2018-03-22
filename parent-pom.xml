@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   
-  <groupId>com.seic.api.global.policy</groupId>
+  <groupId>com.ddisrupt.api.global.policy</groupId>
   <artifactId>parent-pom</artifactId>
   <version>0.0.1-SNAPSHOT</version>  
   <packaging>pom</packaging>
@@ -20,7 +20,7 @@
      <maven.resources.plugin>3.0.1</maven.resources.plugin>
 
      <!-- Default encoding for all build plugins, avoiding OS specific encoding -->
-     <repository.server.root>http://seidevimsart01.ctc.seic.com:8081/artifactory</repository.server.root>     
+     <repository.server.root>http://ddisrupt01.ctc.ddisrupt.com:8081/artifactory</repository.server.root>     
      <repository.local.home>${HOME}/.m2/repository</repository.local.home>
      <repository.maven.central>http://repo1.maven.org/maven2</repository.maven.central>
      <releases.distribution.url>${repository.server.root}/api-artifacts</releases.distribution.url>
@@ -30,7 +30,7 @@
      
 
      <!-- Common properties for downloading the enterprise level reusable policies -->
-     <apigee.common.policies.groupId>com.seic.api.global.policy</apigee.common.policies.groupId>
+     <apigee.common.policies.groupId>com.ddisrupt.api.global.policy</apigee.common.policies.groupId>
      <apigee.common.policies.artifactId>apigee-commons</apigee.common.policies.artifactId>
      <common.apigee.policies.version>0.0.1-SNAPSHOT</common.apigee.policies.version>
      <common.apigee.policies.outputdir>${project.build.directory}/apigee-commons</common.apigee.policies.outputdir>

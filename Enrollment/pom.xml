@@ -1,15 +1,15 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.seic.api.global.policy</groupId>
+        <groupId>com.ddisrupt.api.global.policy</groupId>
         <artifactId>parent-pom</artifactId>
         <relativePath>../parent-pom.xml</relativePath>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.seic.api.global.policy</groupId>
-    <artifactId>SwpEnrollment</artifactId>
-    <name>SwpEnrollment</name>
+    <groupId>com.ddisrupt.api.global.policy</groupId>
+    <artifactId>Enrollment</artifactId>
+    <name>Enrollment</name>
     <description>A collection of common reusable Apigee policies and fragments</description>
     <version>0.1</version>
     <packaging>pom</packaging>
@@ -17,7 +17,7 @@
     <repositories>
         <repository>
             <id>api-artifacts</id>
-            <url>http://seidevimsart01.ctc.seic.com:8081/artifactory/api-artifacts</url>
+            <url>http://ddisrupt01.ctc.seic.com:8081/artifactory/api-artifacts</url>
         </repository>
     </repositories>
 
