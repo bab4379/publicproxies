@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="getSessionTokenFromRequestHeaders">
+    <DisplayName>getSessionTokenFromRequestHeaders</DisplayName>
+    <Properties/>
+    <Properties/>
+    <Source clearPayload="false">request</Source>
+    <Header name="smgwpsession">
+        <Pattern ignoreCase="true">{sessionToken}</Pattern>
+    </Header>    
+    <Header name="grant_type">
+        <Pattern ignoreCase="true">{grant_type}</Pattern>
+    </Header>
+    <FormParam name="grant_type">
+        <Pattern ignoreCase="true">{grant_type}</Pattern>
+    </FormParam>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</ExtractVariables>

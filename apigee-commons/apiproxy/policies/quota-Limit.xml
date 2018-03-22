@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Quota async="false" continueOnError="false" enabled="false" name="quota-Limit">
+    <DisplayName>quota-Limit</DisplayName>
+    <Properties/>
+    <Distributed>true</Distributed>
+    <Synchronous>true</Synchronous>
+    <Allow count="1" countRef="quotaLimit.allowCount"/>
+    <Interval ref="quotaLimit.interval">1</Interval>
+    <TimeUnit ref="quotaLimit.timeunit">minute</TimeUnit>
+</Quota>

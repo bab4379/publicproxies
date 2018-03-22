@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="createSMRequestForAuthorization">
+    <DisplayName>createSMRequestForAuthorization</DisplayName>
+    <Properties/>
+    <Set>
+        <Headers>
+            <Header name="contentType">application/xml</Header>
+        </Headers>
+        <Payload clearPayload="true" contentType="application/xml">
+            <authorizationRequest>
+                <action>POST</action>
+                <resource>{sps.authorize.resource}</resource>
+                <sessionToken>{sessionToken}</sessionToken>
+            </authorizationRequest>
+        </Payload>
+        <Verb>POST</Verb>
+        <Path>{sps.authorize.targetPath}</Path>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="true" transport="http" type="request">authorize.request</AssignTo>
+</AssignMessage>

@@ -1,0 +1,6 @@
+<FaultRule name="Quota Errors">
+    <Step>
+        <Name>Concurrent-Rate-Limit-Raise-Fault</Name>
+        <Condition>(concurrentratelimit.concurrent-Rate-Limit.available.count == 0)</Condition>
+    </Step>
+</FaultRule>

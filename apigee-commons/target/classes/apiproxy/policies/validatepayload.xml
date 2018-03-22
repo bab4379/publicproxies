@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="true"?>
+<FlowCallout name="validatepayload" enabled="true" continueOnError="false" async="false"> 
+    <DisplayName>validatepayload</DisplayName>
+    <FaultRules/> 
+    <Properties/> 
+    <SharedFlowBundle>SWPSharedFlowWLPayload</SharedFlowBundle> 
+</FlowCallout>

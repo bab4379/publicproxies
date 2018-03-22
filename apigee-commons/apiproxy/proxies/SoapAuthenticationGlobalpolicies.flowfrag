@@ -1,0 +1,48 @@
+<Step>
+    <Condition>(tokenAvailable = false)</Condition>
+    <Name>setSMServiceCallTargetURL</Name>
+</Step>
+<Step>
+    <Condition>(tokenAvailable = false)</Condition>
+    <Name>decodeBaseAuthHeaders</Name>
+</Step>
+<Step>
+    <Condition>(tokenAvailable = false)</Condition>
+    <Name>extractRequestHeaderDataForAuthentication</Name>
+</Step>
+<Step>
+    <Condition>(username != null AND password != null and tokenAvailable = false)</Condition>
+    <Name>createSMRequestForAuthentication</Name>
+</Step>
+<Step>
+    <Condition>(username != null AND password != null and tokenAvailable = false)</Condition>
+    <Name>smAuthenticationRequestCallout</Name>
+</Step>
+<Step>
+    <Condition>(username != null AND password != null and tokenAvailable = false)</Condition>
+    <Name>extractSMAuthenticationResponse</Name>
+</Step>
+<Step>
+    <Condition>(tokenAvailable = false and resultCode != "LOGIN_SUCCESS")</Condition>
+    <Name>smFailedAuthorizationAndAuthentication</Name>
+</Step>
+<Step>
+    <Condition>(tokenAvailable = false)</Condition>
+    <Name>createSMRequestForAuthorization</Name>
+</Step>
+<Step>
+    <Condition>(tokenAvailable = false)</Condition>
+    <Name>smAuthorizationRequestCallout</Name>
+</Step>
+<Step>
+    <Condition>(tokenAvailable = false)</Condition>
+    <Name>extractSMAuthorizationResponse</Name>
+</Step>
+<Step>
+    <Condition>(tokenAvailable = false and resultCode != "AUTHORIZED")</Condition>
+    <Name>smFailedAuthorizationAndAuthentication</Name>
+</Step>
+<Step>
+    <Condition>(tokenAvailable = false)</Condition>
+    <Name>removeHeaderInfo</Name>
+</Step>

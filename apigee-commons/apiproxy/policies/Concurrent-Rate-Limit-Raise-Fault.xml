@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="Concurrent-Rate-Limit-Raise-Fault">
+    <DisplayName>Concurrent-Rate-Limit-Raise-Fault</DisplayName>
+    <Properties/>
+    <FaultResponse>
+        <Set>
+            <Headers/>
+            <Payload contentType="application/json" variablePrefix="#" variableSuffix="%">
+            {
+              "errorInfo": {
+                "status": "failure",
+                "detail": {
+                    "code": "500",
+                    "text": "Too Many Requests",
+                    "severity": "error"
+                    }
+                }
+            } 
+            </Payload>
+            <StatusCode>503</StatusCode>
+            <ReasonPhrase>Too Many Requests</ReasonPhrase>
+        </Set>
+    </FaultResponse>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

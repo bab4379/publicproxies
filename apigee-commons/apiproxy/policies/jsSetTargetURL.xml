@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Javascript async="false" continueOnError="false" enabled="true" timeLimit="200" name="jsSetTargetURL">
+    <DisplayName>jsSetTargetURL</DisplayName>
+    <Properties/>
+    <ResourceURL>jsc://jsSetTargetURL.js</ResourceURL>
+</Javascript>

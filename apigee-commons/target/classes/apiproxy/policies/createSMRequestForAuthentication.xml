@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="createSMRequestForAuthentication">
+    <DisplayName>createSMRequestForAuthentication</DisplayName>
+    <Properties/>
+    <Set>
+        <Headers>
+            <Header name="contentType" clearPayload="true">application/xml</Header>
+        </Headers>
+        <Payload contentType="application/xml">
+            <loginRequest>
+                <userName>{username}</userName>
+                <password>{password}</password>
+                <binaryCreds/>
+                <action>GET</action>
+            </loginRequest>
+        </Payload>
+        <Verb>POST</Verb>
+        <Path>{sps.authenticate.targetPath}</Path>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="true" transport="http" type="request">authenticate.request</AssignTo>
+</AssignMessage>

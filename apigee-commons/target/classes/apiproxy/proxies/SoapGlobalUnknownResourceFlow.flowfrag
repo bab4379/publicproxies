@@ -1,0 +1,10 @@
+<Flow name="UnknownResource">
+    <Description>Unknown Resource</Description>
+    <Request>
+        <Step>
+            <Name>raise-invalid-resource</Name>
+        </Step>
+    </Request>
+    <Response/>
+    <Condition/>
+</Flow>

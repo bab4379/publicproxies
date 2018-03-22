@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="extractFormDataForAuthentication">
+    <DisplayName>extractFormDataForAuthentication</DisplayName>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <Source clearPayload="false">request</Source>
+	 <Header name="grant_type">
+        <Pattern ignoreCase="true">{grant_type}</Pattern>
+    </Header>
+    <FormParam name="grant_type">
+        <Pattern ignoreCase="true">{grant_type}</Pattern>
+    </FormParam>
+    <FormParam name="username">
+        <Pattern ignoreCase="true">{username}</Pattern>
+    </FormParam>
+    <FormParam name="password">
+        <Pattern ignoreCase="true">{password}</Pattern>
+    </FormParam>
+</ExtractVariables>

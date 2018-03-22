@@ -1,0 +1,17 @@
+<AlwaysEnforce>true</AlwaysEnforce>
+<Step>
+    <Name>add-Cors</Name>
+</Step>
+<Step>
+    <Name>setResponseErrorFlowVariables</Name>
+</Step>
+<Step>
+    <Name>logErrors</Name>
+</Step>
+<Step>
+     <Name>raise-service-callout-fault</Name>
+     <Condition>(fault.name = "ExecutionFailed")</Condition>
+</Step>
+<Step>
+    <Name>raiseFault</Name>
+</Step>

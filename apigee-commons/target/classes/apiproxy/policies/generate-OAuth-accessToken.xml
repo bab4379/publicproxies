@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV2 async="false" continueOnError="false" enabled="true" name="generate-OAuth-accessToken">
+    <DisplayName>generate-OAuth-accessToken</DisplayName>
+    <Properties/>
+    <Operation>GenerateAccessToken</Operation>
+    <ExpiresIn>3600000</ExpiresIn>
+    <SupportedGrantTypes>
+        <GrantType>password</GrantType>
+        <GrantType>client_credentials</GrantType>
+    </SupportedGrantTypes>
+    <GrantType>grant_type</GrantType>
+    <RefreshTokenExpiresIn>3600000</RefreshTokenExpiresIn>
+    <GenerateResponse enabled="true"/>
+    <GenerateErrorResponse enabled="true"/>
+    <Attributes>
+        <Attribute name="sm.token.sm_user" ref="userId" display="false"/>
+        <Attribute name="sm.token.sm_universalid" ref="sm_universalid" display="false"/>
+        <Attribute name="sm.token.sessionToken" ref="sessionToken" display="false"/>
+    </Attributes>
+</OAuthV2>

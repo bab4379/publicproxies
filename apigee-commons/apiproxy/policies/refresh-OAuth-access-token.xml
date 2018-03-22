@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV2 async="false" continueOnError="false" enabled="true" name="refresh-OAuth-access-token">
+    <DisplayName>refresh-OAuth-access-token</DisplayName>
+    <Operation>RefreshAccessToken</Operation>
+    <ExpiresIn>100000</ExpiresIn>
+    <GrantType>request.formparam.grant_type</GrantType>
+    <ReuseRefreshToken>true</ReuseRefreshToken>
+    <GenerateResponse enabled="true"/>
+</OAuthV2>

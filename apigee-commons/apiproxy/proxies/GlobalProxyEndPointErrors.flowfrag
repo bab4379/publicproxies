@@ -1,0 +1,10 @@
+<FaultRule name="Injection_Error">
+    <Step>
+        <Name>raise-data-protection-fault</Name>
+        <Condition>(message.content Like "*in sql-injection-regular-expression-protection*") </Condition>
+    </Step>
+    <Step>
+        <Name>raise-data-protection-fault</Name>
+        <Condition>(message.content Like "*in xss-regular-expression-protection*") </Condition>
+    </Step>
+</FaultRule>

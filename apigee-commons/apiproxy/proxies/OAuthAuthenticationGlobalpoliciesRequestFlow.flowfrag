@@ -1,0 +1,54 @@
+<Step>
+    <Name>setSMServiceCallTargetURL</Name>
+</Step>
+<Step>
+    <Name>extractFormDataForAuthentication</Name>
+</Step> 
+<Step>
+    <Condition>(grant_type != "client_credentials" AND grant_type != "password")</Condition>
+    <Name>raise-request-validation-fault</Name>
+</Step>
+<Step>
+    <Condition>(username != null AND password != null AND grant_type == "client_credentials") OR (username == null AND password == null AND grant_type == "password")</Condition>
+    <Name>raise-request-validation-fault</Name>
+</Step>
+<Step>
+    <Condition>(username == null AND password == null)</Condition>
+    <Name>getSessionTokenFromRequestHeaders</Name>
+</Step>
+<Step>
+    <Condition>(username == null AND password == null and sessionToken == null)</Condition>
+    <Name>extractSessionTokenFromCookie</Name>
+</Step>
+<Step>
+   <Condition>((username != null AND password != null AND grant_type == "password"))</Condition>
+   <Name>createSMRequestForAuthentication</Name>
+</Step>
+<Step>
+    <Condition>((username != null AND password != null AND grant_type == "password")</Condition>
+    <Name>smAuthenticationRequestCallout</Name>
+</Step>
+<Step>
+    <Condition>((username != null AND password != null AND grant_type == "password"))</Condition>
+    <Name>extractSMAuthenticationResponse</Name>
+</Step>
+<Step>
+    <Condition>(grant_type == "password" AND resultCode != "LOGIN_SUCCESS")</Condition>
+    <Name>smFailedAuthorizationAndAuthentication</Name>
+</Step>
+<Step>
+    <Name>createSMRequestForAuthorization</Name>
+</Step>
+<Step>
+    <Name>smAuthorizationRequestCallout</Name>
+</Step>
+<Step>
+    <Name>extractSMAuthorizationResponse</Name>
+</Step>
+<Step>
+    <Condition>(resultCode != "AUTHORIZED")</Condition>
+    <Name>smFailedAuthorizationAndAuthentication</Name>
+</Step>
+<Step>
+    <Name>generate-OAuth-accessToken</Name>
+</Step>

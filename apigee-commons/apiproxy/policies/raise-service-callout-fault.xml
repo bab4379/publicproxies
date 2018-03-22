@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="raise-service-callout-fault">
+    <DisplayName>raise-service-callout-fault</DisplayName>
+    <Properties/>
+    <FaultResponse>
+        <Set>
+            <Headers/>
+            <Payload contentType="${TargetCallout.response.header.Content-Type}">{TargetCallout.response.content}</Payload>
+            <StatusCode>{TargetCallout.response.status.code}</StatusCode>
+            <ReasonPhrase>{TargetCallout.response.status}</ReasonPhrase>
+        </Set>
+    </FaultResponse>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

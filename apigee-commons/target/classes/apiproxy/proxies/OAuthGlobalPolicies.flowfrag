@@ -1,0 +1,42 @@
+<Step>
+    <Name>add-Cors</Name>
+</Step>
+<Step>
+    <Name>generateGuid</Name>
+</Step>
+<Step>
+    <Name>saveGuid</Name>
+</Step>
+<Step>
+    <Name>getGlobalKVMConfigurationList</Name>
+</Step>
+<Step>
+    <Name>globalRequestModification</Name>
+</Step>
+<Step>
+    <Name>quota-Limit</Name>
+</Step>
+<Step>
+    <Name>spike-Arrest</Name>
+</Step>
+<Step>
+    <Name>sql-injection-regular-expression-protection</Name>
+</Step>
+<Step>
+    <Name>xss-regular-expression-protection</Name>
+</Step>
+<Step>
+    <Name>request-header-data-protection</Name>
+</Step>
+<Step>
+    <Name>raise-data-protection-fault</Name>
+    <Condition>(paramError = true)</Condition>
+</Step>
+<Step>
+    <Name>requestMessageLogging</Name>
+</Step>
+<Step>
+    <Condition>request.verb != "OPTIONS"</Condition>
+    <Name>verify-Api-Key</Name>
+</Step>
+

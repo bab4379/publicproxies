@@ -1,0 +1,7 @@
+<Step>
+   <Name>concurrent-Rate-Limit</Name>
+</Step>
+<Step>
+    <Condition>request.verb != "OPTIONS"</Condition>
+    <Name>jsSetTargetURL</Name>
+</Step>

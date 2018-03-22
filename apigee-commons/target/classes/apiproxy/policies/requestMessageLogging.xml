@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<MessageLogging async="false" continueOnError="false" enabled="true" name="requestMessageLogging">
+    <DisplayName>requestMessageLogging</DisplayName>
+    <File>
+        <Message>
+            {system.time} Request Tracking Id :{message.header.RequestTrackingId}
+            Method :{request.verb}
+            Uri: {request.uri}
+            User Agent : {request.header.user-agent}           
+            Client Recieved : {client.received.start.time}
+        </Message>
+        <FileName>request.log</FileName>
+        <FileRotationOptions rotateFileOnStartup="false">
+            <FileRotationType>SIZE</FileRotationType>
+            <MaxFileSizeInMB>10</MaxFileSizeInMB>
+            <MaxFilesToRetain>10</MaxFilesToRetain>
+        </FileRotationOptions>
+    </File>
+    <logLevel>INFO</logLevel>   
+</MessageLogging>

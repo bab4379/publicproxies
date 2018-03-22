@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RegularExpressionProtection async="false" continueOnError="false" enabled="true" name="xss-regular-expression-protection">
+    <DisplayName>xss-regular-expression-protection</DisplayName>
+    <Properties/>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <Variable name="request.querystring">
+        <Pattern ignoreCase="false">((ondragend(.*?)=)|(ondragenter(.*?)=)|(ondragleave(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((ondragover(.*?)=)|(ondragstart(.*?)=)|(ondrop(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onmousedown(.*?)=)|(onmousemove(.*?)=)|(onmouseout(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onmouseover(.*?)=)|(onmouseup(.*?)=)|(onmousewheel(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onscroll(.*?)=)|(onwheel(.*?)=)|(oncopy(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((oncut(.*?)=)|(onpaste(.*?)=)|(oncopy(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onabort(.*?)=)|(oncanplay(.*?)=)|(oncanplaythrough(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((oncuechange(.*?)=)|(ondurationchange(.*?)=)|(onemptied(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onended(.*?)=)|(onerror(.*?)=)|(onloadeddata(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onloadedmetadata(.*?)=)|(onloadstart(.*?)=)|(onpause(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onplay(.*?)=)|(onplaying(.*?)=)|(onprogress(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onratechange(.*?)=)|(onseeked(.*?)=)|(onseeking(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onstalled(.*?)=)|(onsuspend(.*?)=)|(ontimeupdate(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onvolumechange(.*?)=)|(onwaiting(.*?)=)|(onerror(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onshow(.*?)=)|(ontoggle(.*?)=)|(onerror(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onafterprint(.*?)=)|(onbeforeprint(.*?)=)|(onbeforeunload(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onhashchange(.*?)=)|(onload(.*?)=)|(onmessage(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onoffline(.*?)=)|(ononline(.*?)=)|(onpagehide(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onpagehow(.*?)=)|(onpopstate(.*?)=)|(onresize(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onstorage(.*?)=)|(onunload(.*?)=)|(onblur(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onchange(.*?)=)|(oncontextmenu(.*?)=)|(onfocus(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((oninput(.*?)=)|(oninvalid(.*?)=)|(onreset(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onsearch(.*?)=)|(onselect(.*?)=)|(onsubmit(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onkeydown(.*?)=)|(onkeypress(.*?)=)|(onkeyup(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onclick(.*?)=)|(ondblclick(.*?)=)|(ondrag(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">(%3C)div(.*?)(%3E)</Pattern>
+        <Pattern ignoreCase="false">(%3C)script(%3E)(.*?)(%3C)(%2F)script(%3E)</Pattern>
+        <Pattern ignoreCase="false">(%3C)(%2F)script(.*?)(%3E)</Pattern>
+        <Pattern ignoreCase="false">(%3C)script(.*?)(%3E)</Pattern>
+        <Pattern ignoreCase="false">(%3C)td(.*?)(%3E)</Pattern>
+        <Pattern ignoreCase="false">(%3C)table(.*?)(%3E)</Pattern>
+        <Pattern ignoreCase="false">(%3C)link(.*?)(%3E)</Pattern>
+        <Pattern ignoreCase="false">(%3C)input(.*?)(%3E)</Pattern>
+        <Pattern ignoreCase="false">(%3C)body(.*?)(%3E)</Pattern>
+        <Pattern ignoreCase="false">(%3C)iframe(.*?)(%3E)</Pattern>
+        <Pattern ignoreCase="false">(%3C)object(.*?)(%3E)</Pattern>
+        <Pattern ignoreCase="false">(%3C)embed(.*?)(%3E)</Pattern>
+        <Pattern ignoreCase="false">(%3C)img(.*?)(%3E)</Pattern>
+        <Pattern ignoreCase="false">vbscript(%3A)</Pattern>
+        <Pattern ignoreCase="false">eval(%5C)(%28)(.*?)(%5C)(%29)</Pattern>
+        <Pattern ignoreCase="false">expression(%5C)(%28)(%28)(.*?)(%5C)(%29)</Pattern>
+        <Pattern ignoreCase="false">src(.*?)(%3D)(.*?)(%5C)(%22)(.*?)(%5C)(%22)</Pattern>
+        <Pattern ignoreCase="false">src(.*?)(%3D)(.*?)(%5C)(%27)(.*?)(%5C)(%27)</Pattern>
+    </Variable>
+    <Variable name="request.content">
+        <Pattern ignoreCase="false">((ondragend(.*?)=)|(ondragenter(.*?)=)|(ondragleave(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((ondragover(.*?)=)|(ondragstart(.*?)=)|(ondrop(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onmousedown(.*?)=)|(onmousemove(.*?)=)|(onmouseout(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onmouseover(.*?)=)|(onmouseup(.*?)=)|(onmousewheel(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onscroll(.*?)=)|(onwheel(.*?)=)|(oncopy(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((oncut(.*?)=)|(onpaste(.*?)=)|(oncopy(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onabort(.*?)=)|(oncanplay(.*?)=)|(oncanplaythrough(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((oncuechange(.*?)=)|(ondurationchange(.*?)=)|(onemptied(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onended(.*?)=)|(onerror(.*?)=)|(onloadeddata(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onloadedmetadata(.*?)=)|(onloadstart(.*?)=)|(onpause(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onplay(.*?)=)|(onplaying(.*?)=)|(onprogress(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onratechange(.*?)=)|(onseeked(.*?)=)|(onseeking(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onstalled(.*?)=)|(onsuspend(.*?)=)|(ontimeupdate(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onvolumechange(.*?)=)|(onwaiting(.*?)=)|(onerror(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onshow(.*?)=)|(ontoggle(.*?)=)|(onerror(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onafterprint(.*?)=)|(onbeforeprint(.*?)=)|(onbeforeunload(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onhashchange(.*?)=)|(onload(.*?)=)|(onmessage(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onoffline(.*?)=)|(ononline(.*?)=)|(onpagehide(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onpagehow(.*?)=)|(onpopstate(.*?)=)|(onresize(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onstorage(.*?)=)|(onunload(.*?)=)|(onblur(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onchange(.*?)=)|(oncontextmenu(.*?)=)|(onfocus(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((oninput(.*?)=)|(oninvalid(.*?)=)|(onreset(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onsearch(.*?)=)|(onselect(.*?)=)|(onsubmit(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onkeydown(.*?)=)|(onkeypress(.*?)=)|(onkeyup(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">((onclick(.*?)=)|(ondblclick(.*?)=)|(ondrag(.*?)=))</Pattern>
+        <Pattern ignoreCase="false">&lt;div(.*?)&gt;</Pattern>        
+        <Pattern ignoreCase="false">&lt;script&gt;(.*?)&lt;/script&gt;</Pattern>
+        <Pattern ignoreCase="false">&lt;/script(.*?)&gt;</Pattern>
+        <Pattern ignoreCase="false">&lt;script(.*?)&gt;</Pattern>
+        <Pattern ignoreCase="false">&lt;td(.*?)&gt;</Pattern>
+        <Pattern ignoreCase="false">&lt;table(.*?)&gt;</Pattern>
+        <Pattern ignoreCase="false">&lt;link(.*?)&gt;</Pattern>
+        <Pattern ignoreCase="false">&lt;input(.*?)&gt;</Pattern>
+        <Pattern ignoreCase="false">&lt;body(.*?)&gt;</Pattern>
+        <Pattern ignoreCase="false">&lt;iframe(.*?)&gt;</Pattern>
+        <Pattern ignoreCase="false">&lt;object(.*?)&gt;</Pattern>
+        <Pattern ignoreCase="false">&lt;embed(.*?)&gt;</Pattern>
+        <Pattern ignoreCase="false">&lt;img(.*?)&gt;</Pattern>
+        <Pattern ignoreCase="false">vbscript:</Pattern>
+        <Pattern ignoreCase="false">eval\\((.*?)\\)</Pattern>
+        <Pattern ignoreCase="false">expression\\((.*?)\\)</Pattern>
+        <Pattern ignoreCase="false">src(.*?)=(.*?)\\\'(.*?)\\\'</Pattern>
+        <Pattern ignoreCase="false">src(.*?)=(.*?)\\\"(.*?)\\\"</Pattern>
+    </Variable>
+</RegularExpressionProtection>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations async="false" continueOnError="false" enabled="true" name="getTargetUrlByKVM" mapIdentifier="QMap">
+    <DisplayName>getTargetUrlByKVM</DisplayName>
+    <Properties/>
+    <ExclusiveCache>false</ExclusiveCache>
+    <ExpiryTimeInSecs>-1</ExpiryTimeInSecs>
+    <Get assignTo="targetHost">
+        <Key>
+            <!--<Parameter ref="verifyapikey.verify-Api-Key.apiproduct.env"/> -->
+            <Parameter ref="verifyapikey.verify-Api-Key.environment"/>
+        </Key>
+    </Get>
+    <Scope>environment</Scope>
+</KeyValueMapOperations>

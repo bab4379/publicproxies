@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout async="false" continueOnError="false" enabled="true" name="smAuthenticationRequestCallout">
+    <DisplayName>smAuthenticationRequestCallout</DisplayName>
+    <Properties/>
+    <Request clearPayload="false" variable="authenticate.request">
+        <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    </Request>
+    <Response>calloutResponse</Response>
+    <HTTPTargetConnection>
+        <Properties/>
+        <URL>http://spsws.gwpdev.seic.com/</URL>
+    </HTTPTargetConnection>
+</ServiceCallout>

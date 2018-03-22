@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<MessageLogging async="false" continueOnError="false" enabled="true" name="logErrors">
+    <DisplayName>ErrorLogging</DisplayName>
+    <File>
+        <Message>
+            {system.time} Request Tracking Id : {error.header.RequestTrackingId}
+            Error Code : {flow.myapi.error.code}
+            Error Message : {flow.myapi.error.message}
+            Error Reason : {flow.myapi.error.reason}
+            Client Recieved : {client.received.start.time}
+            Sent To Target Time : {target.sent.start.time}
+            Target Received End Time: {target.received.end.time}
+        </Message>
+        <FileName>error.log</FileName>
+        <FileRotationOptions rotateFileOnStartup="false">
+            <FileRotationType>SIZE</FileRotationType>
+            <MaxFileSizeInMB>10</MaxFileSizeInMB>
+            <MaxFilesToRetain>10</MaxFilesToRetain>
+        </FileRotationOptions>
+    </File>
+    <logLevel>ERROR</logLevel>
+</MessageLogging>

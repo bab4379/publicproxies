@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="removeHeaderInfoFromResponse">
+    <DisplayName>removeHeaderInfoFromResponse</DisplayName>
+    <Remove>
+        <Headers>
+            <Header name="Authorization"/>
+        </Headers>
+    </Remove>
+    <Set>
+        <Headers>
+            <Header name="sm_universalid" clearPayload="true">{accesstoken.sm.token.sm_universalid}</Header>
+            <Header name="sm_user" clearPayload="true">{accesstoken.sm.token.sm_user}</Header>
+        </Headers>
+    </Set>
+    <AssignVariable>
+        <Name>sm_universalid</Name>
+        <Ref>accesstoken.sm.token.sm_universalid</Ref>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

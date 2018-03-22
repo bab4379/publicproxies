@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="extractSMAuthenticationResponse">
+    <DisplayName>extractSMAuthenticationResponse</DisplayName>
+    <Source>calloutResponse</Source>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <XMLPayload stopPayloadProcessing="false">
+        <Namespaces/>
+        <Variable name="resultCode" type="string">
+            <XPath>//loginResponse/resultCode</XPath>
+        </Variable>
+        <Variable name="userId" type="string">
+            <XPath>//response[name='SM_USER']/value</XPath>
+        </Variable>
+        <Variable name="sessionToken" type="string">
+            <XPath>//loginResponse/sessionToken</XPath>
+        </Variable>
+    </XMLPayload>
+</ExtractVariables>

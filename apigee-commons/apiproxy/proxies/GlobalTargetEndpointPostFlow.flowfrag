@@ -1,0 +1,5 @@
+<AlwaysEnforce>true</AlwaysEnforce>
+<Step>
+   <Condition>(response.status.code = '' and isTargetUrlEmpty = false)</Condition>
+   <Name>concurrent-Rate-Limit</Name>
+</Step>	

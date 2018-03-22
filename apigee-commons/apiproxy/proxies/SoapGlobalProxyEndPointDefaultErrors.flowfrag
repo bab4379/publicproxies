@@ -1,0 +1,15 @@
+<AlwaysEnforce>true</AlwaysEnforce>
+<Step>
+    <Name>setResponseErrorFlowVariables</Name>
+</Step>
+<Step>
+    <Name>logErrors</Name>
+</Step>
+<Step>
+     <Name>raise-service-callout-fault</Name>
+     <Condition>(fault.name = "ExecutionFailed")</Condition>
+</Step>
+<Step>
+    <Condition>(flow.myapi.error.message != "Raising fault. Fault name : Return-WSDL" and response.content = '')</Condition>
+    <Name>assignErrorMessage</Name>
+</Step>

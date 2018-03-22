@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<MessageLogging async="false" continueOnError="false" enabled="true" name="responseMessageLogging">
+    <DisplayName>responseMessageLogging</DisplayName>
+    <File>
+        <Message>
+            {system.time} Request Tracking Id :{response.header.RequestTrackingId}
+            Response Status Code: {response.status.code}
+            Client Recieved : {client.received.start.time}
+            Sent To Target Time : {target.sent.start.time}
+            Target Received End Time: {target.received.end.time}
+            Total Request Time in Milli Secs: {total_request_time}
+            Total Target Time in Milli Secs: {total_target_time}
+        </Message>
+        <FileName>response.log</FileName>
+        <FileRotationOptions rotateFileOnStartup="false">
+            <FileRotationType>SIZE</FileRotationType>
+            <MaxFileSizeInMB>10</MaxFileSizeInMB>
+            <MaxFilesToRetain>10</MaxFilesToRetain>
+        </FileRotationOptions>
+    </File>
+    <logLevel>INFO</logLevel>
+</MessageLogging>

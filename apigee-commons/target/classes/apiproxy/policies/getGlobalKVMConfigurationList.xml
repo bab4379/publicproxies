@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations async="false" continueOnError="false" enabled="true" name="getGlobalKVMConfigurationList" mapIdentifier="globalConfiguration">
+    <DisplayName>getGlobalKVMConfigurationList</DisplayName>
+    <ExclusiveCache>false</ExclusiveCache>
+    <ExpiryTimeInSecs>-1</ExpiryTimeInSecs>
+    <Get assignTo="sps.targeturl">
+        <Key>
+            <Parameter>sps.targeturl</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="sps.authenticate.targetPath">
+        <Key>
+            <Parameter>sps.authenticate.targetPath</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="sps.authorize.targetPath">
+        <Key>
+            <Parameter>sps.authorize.targetPath</Parameter>
+        </Key>
+    </Get>   
+    <Get assignTo="sps.authorize.resource">
+        <Key>
+            <Parameter>sps.authorize.resource</Parameter>
+        </Key>
+    </Get>
+	<Get assignTo="spikeArrest.rate">
+        <Key>
+            <Parameter>spikeArrest.rate</Parameter>
+        </Key>
+    </Get>
+	<Get assignTo="quotaLimit.interval">
+        <Key>
+            <Parameter>quotaLimit.interval</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="quotaLimit.timeunit">
+        <Key>
+            <Parameter>quotaLimit.timeunit</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="quotaLimit.allowCount">
+        <Key>
+            <Parameter>quotaLimit.allowCount</Parameter>
+        </Key>
+    </Get>
+    <Scope>environment</Scope>
+</KeyValueMapOperations>

@@ -1,0 +1,6 @@
+<Step>
+    <Name>generateGuid</Name>
+</Step>
+<Step>
+    <Name>saveGuid</Name>
+</Step>

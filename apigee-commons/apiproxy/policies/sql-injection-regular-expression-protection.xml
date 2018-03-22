@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RegularExpressionProtection async="false" continueOnError="false" enabled="true" name="sql-injection-regular-expression-protection">
+    <DisplayName>sql-injection-regular-expression-protection</DisplayName>
+    <Properties/>
+    <Variable name="request.content">
+        <Pattern ignoreCase="true">[\s]*((\bexec\b)|(drop\s*table)|(insert\s*into)|(shutdown)|(\bupdate\b.*?\bset\b))</Pattern>
+    </Variable>
+    <Variable name="request.uri">
+        <Pattern ignoreCase="true">[\s]*((\bexec\b)|(drop\s*table)|(insert\s*into)|(shutdown)|(\bupdate\b.*?\bset\b)|(\bor\b))</Pattern>
+    </Variable>
+    <Variable name="request.querystring">
+        <Pattern ignoreCase="true">[\s]*((\bexec\b)|(drop\s*table)|(insert\s*into)|(shutdown)|(\bupdate\b.*?\bset\b)|(\bor\b))</Pattern>
+    </Variable>
+</RegularExpressionProtection>

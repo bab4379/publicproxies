@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="extractSMAuthorizationResponse">
+    <DisplayName>extractSMAuthorizationResponse</DisplayName>
+    <Source>calloutResponse</Source>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <XMLPayload stopPayloadProcessing="false">
+        <Namespaces/>
+        <Variable name="resultCode" type="string">
+            <XPath>//authorizationResult/resultCode</XPath>
+        </Variable>
+        <Variable name="userId" type="string">
+            <XPath>//response[name='sei_loginid']/value</XPath>
+        </Variable>
+        <Variable name="sm_universalid" type="string">
+            <XPath>//response[name='SM_UNIVERSALID']/value</XPath>
+        </Variable>
+        <Variable name="sessionToken" type="string">
+            <XPath>//authorizationResult/sessionToken</XPath>
+        </Variable>
+    </XMLPayload>
+</ExtractVariables>

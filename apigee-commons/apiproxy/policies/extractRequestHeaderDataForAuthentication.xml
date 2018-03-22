@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="extractRequestHeaderDataForAuthentication">
+    <DisplayName>extractRequestHeaderDataForAuthentication</DisplayName>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <Source clearPayload="false">request</Source>
+    <Header name="username">
+        <Pattern ignoreCase="true">{username}</Pattern>
+    </Header>
+    <Header name="password">
+        <Pattern ignoreCase="true">{password}</Pattern>
+    </Header>
+</ExtractVariables>

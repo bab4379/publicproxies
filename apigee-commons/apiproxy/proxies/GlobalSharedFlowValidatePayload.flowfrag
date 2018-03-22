@@ -1,0 +1,4 @@
+<Step>
+    <Name>validatepayload</Name>
+    <Condition>(request.verb = "POST" or request.verb = "PUT" or request.verb = "PATCH")</Condition>
+</Step>
