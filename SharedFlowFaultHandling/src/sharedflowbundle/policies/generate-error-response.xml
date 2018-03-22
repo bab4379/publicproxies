@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="generate-error-response">
+    <DisplayName>Generate Error Response</DisplayName>
+    <Properties/>
+    <FaultResponse>
+        <Set>
+            <Headers>
+                <Header name="Content-Type">application/json</Header>
+                <Header name="RequestTrackingId">{guid}</Header>
+            </Headers>
+            <Payload contentType="application/json" variablePrefix="@" variableSuffix="#">
+                { "code": "@flow.myapi.error.code#", 
+                  "message": "@flow.myapi.error.message#",
+                  "more_info": @flow.myapi.error.info#
+                }
+            </Payload>
+            <StatusCode>{flow.myapi.error.httpStatusCode}</StatusCode>
+            <ReasonPhrase>{flow.myapi.error.httpStatusReason}</ReasonPhrase>
+        </Set>
+    </FaultResponse>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

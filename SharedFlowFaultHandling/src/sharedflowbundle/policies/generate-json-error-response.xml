@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="generate-json-error-response">
+    <DisplayName>Generate JSON Error Response</DisplayName>
+    <Properties/>
+    <FaultResponse>
+        <Set>
+            <Headers>
+                <Header name="content-type">application/json</Header>
+                <Header name="RequestTrackingId">{guid}</Header>
+            </Headers>
+            <Payload variableSuffix="#" variablePrefix="@" contentType="application/json">
+                    @apiError#
+            </Payload>
+            <StatusCode>{flow.myapi.error.httpStatusCode}</StatusCode>
+            <ReasonPhrase>{flow.myapi.error.httpStatusReason}</ReasonPhrase>
+        </Set>
+    </FaultResponse>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

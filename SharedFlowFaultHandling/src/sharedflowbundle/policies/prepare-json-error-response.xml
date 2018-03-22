@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript async="false" continueOnError="false" enabled="true" timeLimit="200" name="prepare-json-error-response">
+    <DisplayName>Prepare JSON Error Response</DisplayName>
+    <Properties/>
+    <ResourceURL>jsc://prepare-json-error-response.js</ResourceURL>
+</Javascript>

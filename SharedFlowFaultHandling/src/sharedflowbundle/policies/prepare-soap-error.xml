@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript async="false" continueOnError="false" enabled="true" timeLimit="200" name="prepare-soap-error">
+    <DisplayName>Prepare Soap Error</DisplayName>
+    <Properties/>
+    <ResourceURL>jsc://prepare-soap-error.js</ResourceURL>
+</Javascript>

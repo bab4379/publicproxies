@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlow name="default">
+    <Step>
+        <Name>assign-error-variables-on-threat-detection</Name>
+        <Condition>(threatDetected equals true) OR (regularexpressionprotection.failed equals true) OR (jsonattack.failed equals true)  OR (xmlattack.failed equals true)</Condition>
+    </Step>
+    <Step>
+        <Name>prepare-json-error-response</Name>
+        <Condition>(request.header.Content-Type != "text/xml")</Condition>
+    </Step>
+    <Step>
+        <Name>prepare-soap-error</Name>
+        <Condition>(request.header.Content-Type == "text/xml")</Condition>
+    </Step>
+    <Step>
+        <Name>log-error-message</Name>
+    </Step>
+    <Step>
+        <Name>generate-json-error-response</Name>
+        <Condition>(request.header.Content-Type != "text/xml")</Condition>
+    </Step>
+    <Step>
+        <Name>generate-soap-fault</Name>
+        <Condition>(request.header.Content-Type == "text/xml")</Condition>
+    </Step>
+</SharedFlow>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="generate-soap-fault">
+    <DisplayName>Generate SOAP Fault</DisplayName>
+    <Properties/>
+    <FaultResponse>
+        <Set>
+            <Headers>
+                <Header name="content-type">application/soap+xml</Header>
+                <Header name="RequestTrackingId">{guid}</Header>
+            </Headers>
+            <Payload contentType="application/xml" variableSuffix="#" variablePrefix="@">
+                <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                    <soap:Body>
+                        <soap:Fault>
+                            <faultcode>soap:@apiError.code#</faultcode>
+                            <faultstring>@apiError.message#</faultstring>
+                            <detail>
+                                <message xsi:type="xsd:string">@apiError.userMessage#</message>
+                                <trackingId xsi:type="xsd:string">@guid#</trackingId>
+                                <remediationInfo xsi:type="xsd:string">@apiError.remediationInfo#</remediationInfo>
+                            </detail>
+                        </soap:Fault>
+                    </soap:Body>
+                </soap:Envelope>
+            </Payload>
+            <StatusCode>{flow.myapi.error.httpStatusCode}</StatusCode>
+            <ReasonPhrase>{flow.myapi.error.httpStatusReason}</ReasonPhrase>
+        </Set>
+    </FaultResponse>
+</RaiseFault>

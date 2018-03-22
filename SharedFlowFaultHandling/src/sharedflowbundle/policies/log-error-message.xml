@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<MessageLogging async="false" continueOnError="false" enabled="true" name="log-error-message">
+    <DisplayName>Log Error Message</DisplayName>
+    <File>
+        <Message>
+{system.time} Request Tracking Id : {error.header.RequestTrackingId}
+    Error Code : {flow.myapi.error.code}
+    Error Message : {flow.myapi.error.message}
+    Error Reason : {flow.myapi.error.reason}
+
+        </Message>
+        <FileName>error.log</FileName>
+        <FileRotationOptions rotateFileOnStartup="false">
+            <FileRotationType>SIZE</FileRotationType>
+            <MaxFileSizeInMB>10</MaxFileSizeInMB>
+            <MaxFilesToRetain>10</MaxFilesToRetain>
+        </FileRotationOptions>
+    </File>
+    <logLevel>ERROR</logLevel>
+</MessageLogging>

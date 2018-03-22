@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlowBundle revision="17" name="SWPSharedFlowFaultHandling">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1509994229155</CreatedAt>
+    <CreatedBy>trajagopaljohn@google.com</CreatedBy>
+    <Description>A collection of fault rules to enforce consistency in error handling and reporting across proxies</Description>
+    <DisplayName>SharedFlowFaultHandling</DisplayName>
+    <LastModifiedAt>1510860571970</LastModifiedAt>
+    <LastModifiedBy>trajagopaljohn@google.com</LastModifiedBy>
+    <Policies>
+        <Policy>assign-error-variables-on-threat-detection</Policy>
+        <Policy>generate-json-error-response</Policy>
+        <Policy>generate-soap-fault</Policy>
+        <Policy>log-error-message</Policy>
+        <Policy>lookup-error-display-controls</Policy>
+        <Policy>prepare-json-error-response</Policy>
+        <Policy>prepare-soap-error</Policy>
+    </Policies>
+    <Resources>
+        <Resource>jsc://prepare-json-error-response.js</Resource>
+        <Resource>jsc://prepare-soap-error.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <subType>SharedFlow</subType>
+    <validate>false</validate>
+    <SharedFlows>
+        <SharedFlow>default</SharedFlow>
+    </SharedFlows>
+</SharedFlowBundle>
