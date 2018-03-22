@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="5" name="RemoveJson">
+    <Basepaths>/removejson</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1518879810018</CreatedAt>
+    <CreatedBy>karthik@digitaldisruptionllc.com</CreatedBy>
+    <Description>Demo Proxy to illustrate stripping json response</Description>
+    <DisplayName>RemoveJson</DisplayName>
+    <LastModifiedAt>1520545654474</LastModifiedAt>
+    <LastModifiedBy>karthik@digitaldisruptionllc.com</LastModifiedBy>
+    <ManifestVersion>2ec09b7336381becc7f671957516c3cd7b75d9ff6d7ee90f7ea215f9e29ea12dda32407948bf2167ec1f241387896c1b1ac5378839fff3c6e6c5379368ed8b0e</ManifestVersion>
+    <Policies>
+        <Policy>JS-StripResponse</Policy>
+        <Policy>RequestTrackingId</Policy>
+        <Policy>setguidresponseheader</Policy>
+        <Policy>transform</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://setguidresponseheader.js</Resource>
+        <Resource>jsc://stripresponse.js</Resource>
+        <Resource>jsc://transform.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

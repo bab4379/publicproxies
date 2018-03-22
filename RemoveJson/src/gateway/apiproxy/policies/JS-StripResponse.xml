@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript async="false" continueOnError="false" enabled="false" timeLimit="200" name="JS-StripResponse">
+    <DisplayName>JS-StripResponse</DisplayName>
+    <Properties/>
+    <ResourceURL>jsc://stripresponse.js</ResourceURL>
+</Javascript>

@@ -1,0 +1,92 @@
+{
+    "configurations": [
+        {
+            "name": "dev",
+            "policies": [
+                {
+                    "name": "AssignFlowCalloutVars.xml",
+                    "tokens": [
+                        {
+                            "xpath": "/AssignMessage/AssignVariable/Value[text()='targetpathsuffixValue']",
+                            "value": "/EnrollmentWebServiceEjb/EnrollmentWebServiceEjbService/EnrollmentWebServiceEjbService"
+									  
+                        },
+						{
+                            "xpath": "/AssignMessage/AssignVariable/Value[text()='wlsdomainValue']",
+                            "value": "BUSINESSSERVICES"
+									  
+                        }
+                    ]
+                }						
+            ],
+            "proxies": [],
+            "targets": []
+        },
+        {
+            "name": "integration",
+            "policies": [
+				{
+                    "name": "AssignFlowCalloutVars.xml",
+                    "tokens": [
+                        {
+                            "xpath": "/AssignMessage/AssignVariable/Value[text()='targetpathsuffixValue']",
+                            "value": "/EnrollmentWebServiceEjb/EnrollmentWebServiceEjbService/EnrollmentWebServiceEjbService"
+									  
+                        },
+						{
+                            "xpath": "/AssignMessage/AssignVariable/Value[text()='wlsdomainValue']",
+                            "value": "BUSINESSSERVICES"
+									  
+                        }
+                    ]
+                }
+			],
+            "proxies": [],
+            "targets": []
+        },
+		{
+            "name": "test",
+            "policies": [
+				{
+                    "name": "AssignFlowCalloutVars.xml",
+                    "tokens": [
+                        {
+                            "xpath": "/AssignMessage/AssignVariable/Value[text()='targetpathsuffixValue']",
+                            "value": "/EnrollmentWebServiceEjb/EnrollmentWebServiceEjbService/EnrollmentWebServiceEjbService"
+									  
+                        },
+						{
+                            "xpath": "/AssignMessage/AssignVariable/Value[text()='wlsdomainValue']",
+                            "value": "BUSINESSSERVICES"
+									  
+                        }
+                    ]
+                }
+			],
+            "proxies": [],
+            "targets": []
+	    },
+        {
+            "name": "prod",
+            "policies": [
+				{
+                    "name": "AssignFlowCalloutVars.xml",
+                    "tokens": [
+                        {
+                            "xpath": "/AssignMessage/AssignVariable/Value[text()='targetpathsuffixValue']",
+                            "value": "/EnrollmentWebServiceEjb/EnrollmentWebServiceEjbService/EnrollmentWebServiceEjbService"
+									  
+                        },
+						{
+                            "xpath": "/AssignMessage/AssignVariable/Value[text()='wlsdomainValue']",
+                            "value": "BUSINESSSERVICES"
+									  
+                        }
+                    ]
+                }
+			],
+            "proxies": [],
+            "targets": []
+        }
+    ]
+}

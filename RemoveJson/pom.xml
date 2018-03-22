@@ -1,0 +1,56 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ddisrupt.api.global.policy</groupId>
+        <artifactId>parent-pom</artifactId>
+        <relativePath>../parent-pom.xml</relativePath>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <groupId>com.ddisrupt.api.global.policy</groupId>
+    <artifactId>Enrollment</artifactId>
+    <name>Enrollment</name>
+    <description>A collection of common reusable Apigee policies and fragments</description>
+    <version>0.1</version>
+    <packaging>pom</packaging>
+
+    <repositories>
+<!--        <repository>
+            <id>api-artifacts</id>
+            <url>http://seidevimsart01.ctc.seic.com:8081/artifactory/api-artifacts</url>
+        </repository>-->
+        <repository>
+            <id>api-artifacts</id>
+            <url>http://repo1.maven.org/maven2</url>
+        </repository>
+
+    </repositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <!--Sending it to the classes directory ensures that the maven jar plugin bundles it up like a regular project -->
+                            <outputDirectory>./target/classes/apiproxy</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>./apiproxy</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

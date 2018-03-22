@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest>
+    <Policies>
+        <VersionInfo resourceName="JS-StripResponse" version="c589412bcb66e53bdcf525cd1f0006e07131db8ffca3d94a79e199a543e365f0f1de1d8376d5f22544ff08927e72e6b7302b40c544492bb2f373be9e4bb2577e"/>
+        <VersionInfo resourceName="RequestTrackingId" version="1c2fe4f6f8eb9c7b2050aac41daf0418042a36881b8a0093840ffbc4a23bdf2d0a14c12d412833efc8dad434404136c963a0cd45cb77b0c2648b7a1068fd426e"/>
+        <VersionInfo resourceName="setguidresponseheader" version="ff1b5a953fbf2a54b436b5cc881c0430a0bc5d2de72d64228cf19b9884f6cb17885262653f78842d352f04ae6b89dd4c04a705b12db22cf26c75eeccd54414b8"/>
+        <VersionInfo resourceName="transform" version="601f1fd7d44f1b9f077150a5779c6a0c98c58ffde2aef9b1807f6cb923f13047fad5391c5a0bba487b32fb3cb01d5f3bbb62d1cd5dcbb2f3dc70db4a5f8ecd3c"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="d4ba06fb1959593ed340e5d8fe82e0075aed0a1d485b06f8d784c0dfdd2ceddd90ff563067e0024168a6a8d18491813aabd2a995a4cea2378d98df072b84a445"/>
+    </ProxyEndpoints>
+    <Resources>
+        <VersionInfo resourceName="jsc://setguidresponseheader.js" version="42a2a1c07b0630cb00c85d4696b0ac7338c9144c58ac0426ba3cbcf07dc96b2d8f4c8006b3f90d894507014bd3902069d8b2fc20476591538bc7917377e2223d"/>
+        <VersionInfo resourceName="jsc://stripresponse.js" version="80690327e8bca6b6c49ccf524ed9fefa508865760ee0c528daaeec4027969cfdf9f3547e94f4e084e20855f7ba1d79bb7e04b1d66939438c59cd50401db47cbb"/>
+        <VersionInfo resourceName="jsc://transform.js" version="794270a107f7e8b8f84fb6eda1dd06595993ab94ee1472c7b94934ebcf542ee02349271d8dfaef967ce3ed3b44d496b26d3f5eb2b52b3ce314bf335aad844e8f"/>
+    </Resources>
+    <SharedFlows/>
+    <TargetEndpoints>
+        <VersionInfo resourceName="default" version="229e9803b05a2f108041c13513e15ef9ccb93b4124a22a012c8472895fc18968b5b3bb3a69d81703d561fd3bb2998ca45f126ad6d9cf0f1e38b84f7fd8e64aa1"/>
+    </TargetEndpoints>
+</Manifest>
