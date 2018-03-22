@@ -17,7 +17,7 @@
     <repositories>
         <repository>
             <id>api-artifacts</id>
-            <url>http://ddisrupt01.ctc.seic.com:8081/artifactory/api-artifacts</url>
+            <url>http://seidevimsart01.ctc.seic.com:8081/artifactory/api-artifacts</url>
         </repository>
     </repositories>
 
