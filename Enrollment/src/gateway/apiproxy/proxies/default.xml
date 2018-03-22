@@ -52,8 +52,8 @@
     <HTTPProxyConnection>
         <BasePath>/api/v1/swp/soap/enrollment</BasePath>
         <Properties/>
-        <VirtualHost>sei-default</VirtualHost>
-        <VirtualHost>tdmz-default</VirtualHost>
+        <VirtualHost>default</VirtualHost>
+        <VirtualHost>secure</VirtualHost>
     </HTTPProxyConnection>
     <RouteRule name="noroute"/>
 </ProxyEndpoint>
