@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true"
+	name="Return-WSDL">
+	<DisplayName>Return WSDL</DisplayName>
+	<Properties />
+	<FaultResponse>
+		<Set>
+			<Payload contentType="text/xml" variablePrefix="@" variableSuffix="#">&lt;definitions targetNamespace='http://www.seic.com/enrollment' name='EnrollmentWebServiceEjbService' xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' xmlns:tns='http://www.seic.com/enrollment' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns='http://schemas.xmlsoap.org/wsdl/'>
+  &lt;types>
+    &lt;xsd:schema targetNamespace='' attributeFormDefault='unqualified' elementFormDefault='unqualified' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' xmlns:tns='http://www.seic.com/enrollment' xmlns='http://schemas.xmlsoap.org/wsdl/'>
+      &lt;xsd:import namespace='http://www.seic.com/enrollment' schemaLocation='http://seidevq02oawls02.gwpdev.seic.com:8003/EnrollmentWebServiceEjb/EnrollmentWebServiceEjbService/EnrollmentWebServiceEjbService?xsd=1' />
+    &lt;/xsd:schema>
+  &lt;/types>
+  &lt;message name='executeEnrollment'>
+    &lt;part name='parameters' element='tns:executeEnrollment' />
+    &lt;part name='userId' element='tns:userId' />
+    &lt;part name='version' element='tns:version' />
+  &lt;/message>
+  &lt;message name='executeEnrollmentResponse'>
+    &lt;part name='result' element='tns:executeEnrollmentResponse' />
+  &lt;/message>
+  &lt;portType name='EnrollmentWebServiceEjb'>
+    &lt;operation name='executeEnrollment'>
+      &lt;input message='tns:executeEnrollment' />
+      &lt;output message='tns:executeEnrollmentResponse' />
+    &lt;/operation>
+  &lt;/portType>
+  &lt;binding name='EnrollmentWebServiceEjbPortBinding' type='tns:EnrollmentWebServiceEjb'>
+    &lt;soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http' />
+    &lt;operation name='executeEnrollment'>
+      &lt;soap:operation soapAction='ExecuteEnrollment' />
+      &lt;input>
+        &lt;soap:body use='literal' parts='parameters' />
+        &lt;soap:header message='tns:executeEnrollment' use='literal' part='tns:userId' />
+        &lt;soap:header message='tns:executeEnrollment' use='literal' part='tns:version' />
+      &lt;/input>
+      &lt;output>
+        &lt;soap:body use='literal' parts='result' />
+      &lt;/output>
+    &lt;/operation>
+  &lt;/binding>
+  &lt;service name='EnrollmentWebServiceEjbService'>
+    &lt;port name='EnrollmentWebServiceEjbPort' binding='tns:EnrollmentWebServiceEjbPortBinding'>
+      &lt;soap:address location='https://@request.header.host#/api/v1/swp/soap/enrollment' />
+    &lt;/port>
+  &lt;/service>
+&lt;/definitions></Payload>
+			<StatusCode>200</StatusCode>
+		</Set>
+	</FaultResponse>
+	<IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

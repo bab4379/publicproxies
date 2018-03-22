@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<XSL async="false" continueOnError="false" enabled="true" name="appendSoapRequestHeaders">
+    <DisplayName>appendSoapRequestHeaders</DisplayName>
+    <Properties/>
+    <Source>request</Source>
+    <ResourceURL>xsl://appendSoapRequestHeaders.xsl</ResourceURL>
+    <Parameters ignoreUnresolvedVariables="false">
+        <Parameter name="sm_universalid" ref="sm_universalid"/>
+    </Parameters>
+    <OutputVariable/>
+</XSL>

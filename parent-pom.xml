@@ -1,0 +1,526 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>com.seic.api.global.policy</groupId>
+  <artifactId>parent-pom</artifactId>
+  <version>0.0.1-SNAPSHOT</version>  
+  <packaging>pom</packaging>
+  
+  <properties>
+     <skip.integration.tests>true</skip.integration.tests>
+
+     <main.basedir>${basedir}/../..</main.basedir>
+     <java.version>1.8</java.version>
+     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+     <maven.compiler.plugin>3.5.1</maven.compiler.plugin>
+     <maven.deploy.plugin>2.8.2</maven.deploy.plugin>
+     <maven.dependency.plugin>2.10</maven.dependency.plugin>
+     <maven.resources.plugin>3.0.1</maven.resources.plugin>
+
+     <!-- Default encoding for all build plugins, avoiding OS specific encoding -->
+     <repository.server.root>http://seidevimsart01.ctc.seic.com:8081/artifactory</repository.server.root>     
+     <repository.local.home>${HOME}/.m2/repository</repository.local.home>
+     <repository.maven.central>http://repo1.maven.org/maven2</repository.maven.central>
+     <releases.distribution.url>${repository.server.root}/api-artifacts</releases.distribution.url>
+     <snapshots.distribution.url>${repository.server.root}/api-artifacts</snapshots.distribution.url>
+     <dependency.download.url>${repository.server.root}/api-artifacts</dependency.download.url>
+     <plugin.download.url>${repository.server.root}/api-artifacts</plugin.download.url>
+     
+
+     <!-- Common properties for downloading the enterprise level reusable policies -->
+     <apigee.common.policies.groupId>com.seic.api.global.policy</apigee.common.policies.groupId>
+     <apigee.common.policies.artifactId>apigee-commons</apigee.common.policies.artifactId>
+     <common.apigee.policies.version>0.0.1-SNAPSHOT</common.apigee.policies.version>
+     <common.apigee.policies.outputdir>${project.build.directory}/apigee-commons</common.apigee.policies.outputdir>
+      
+     <!--Common properties for deploying the API specific policies, everything can be overriden by command line parameters -DparameterName -->
+     <apigee.org>${apigeeOrg}</apigee.org>
+     <apigee.env>${apigeeTargetEnv}</apigee.env>
+     <apigee.profile>${apigeeTargetEnv}</apigee.profile>
+     <apigee.hosturl>${apigeeHostUrl}</apigee.hosturl>
+     <apigee.apiversion>v1</apigee.apiversion>
+     <apigee.username>${apigeeUsername}</apigee.username>
+     <apigee.password>${apigeePassword}</apigee.password>
+     <apigee.options>${apigeeOptions}</apigee.options>
+     <apigee.revision>${revision}</apigee.revision>
+  </properties>
+  
+    <repositories>
+       <!-- Only one repository is being listed as we expect the repository to
+       either host Artifacts or act as a proxy to public repositories when required -->
+       <repository>
+           <id>internalMavenRepository</id>
+           <name>Internal Maven Repository</name>
+           <url>${dependency.download.url}</url>
+           <releases>
+               <enabled>true</enabled>
+               <updatePolicy>daily</updatePolicy>
+               <!-- This is the default, but helps to be explicit -->
+               <checksumPolicy>ignore</checksumPolicy>
+           </releases>
+           <snapshots>
+               <enabled>true</enabled>
+               <!-- We should never have to look for a release again, but there may
+               be an issue if a download is interrupted, in that case we expect developers
+               to clean up the local pom file -->
+               <updatePolicy>never</updatePolicy>
+               <checksumPolicy>ignore</checksumPolicy>
+           </snapshots>
+       </repository>
+    </repositories>
+    
+    <pluginRepositories>
+        <!-- Only one repository is being listed as we expect the repository to
+        either host Artifacts or act as a proxy to public repositories when required -->
+        <pluginRepository> 
+            <id>centralMavenPluginRepository</id>
+            <name>Central Maven Plugin Repository</name>
+            <url>${plugin.download.url}</url>
+            <releases>
+                <enabled>false</enabled>
+                <updatePolicy>never</updatePolicy>
+                <!-- This is the default, but helps to be explicit -->
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+                <!-- We should never have to look for a release again, but there may
+                be an issue if a download is interrupted, in that case we expect developers
+                to clean up the local pom file -->
+                <updatePolicy>never</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </snapshots>
+        </pluginRepository>      
+    </pluginRepositories>
+  
+    <distributionManagement>
+        <snapshotRepository>
+            <id>internalMavenSnapshotRepository</id>
+            <name>Internal Snapshots Repository</name>
+            <url>${snapshots.distribution.url}</url>
+            <uniqueVersion>false</uniqueVersion>
+        </snapshotRepository>
+    </distributionManagement>
+    
+    <dependencyManagement>
+        <dependencies>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${maven.deploy.plugin}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven.compiler.plugin}</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.0.1</version>
+                    <executions>
+                        <execution>
+                            <id>copy-transformed-apigee-resources</id>
+                            <phase>prepare-package</phase>
+                            <goals>
+                                <goal>copy-resources</goal>
+                            </goals>
+                            <configuration>
+                                <outputDirectory>./target</outputDirectory>
+                                <resources>
+                                    <resource>
+                                        <directory>./target/gateway/</directory>
+										<excludes>
+											 <exclude>pom.xml</exclude>
+										</excludes>
+                                    </resource>
+                                </resources>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>copy-regular-resources</id>
+                            <phase>prepare-package</phase>
+                            <goals>
+                                <goal>copy-resources</goal>
+                            </goals>
+                            <configuration>
+                                <outputDirectory>./target/classes</outputDirectory>
+                                <resources>
+                                    <resource>
+                                        <directory>src/main/resources</directory>
+                                    </resource>
+                                </resources>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>copy-sharedflow-resources</id>
+                            <phase>prepare-package</phase>
+                            <goals>
+                                <goal>copy-resources</goal>
+                            </goals>
+                            <configuration>
+                                <outputDirectory>./target</outputDirectory>
+                                <resources>
+                                    <resource>
+                                        <directory>src/sharedflowbundle</directory>
+                                        <excludes>
+                                             <exclude>pom.xml</exclude>
+                                        </excludes>
+                                    </resource>
+                                </resources>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+    
+    <profiles>
+        <profile>
+            <id>release</id> <!-- Needs to be activated only when we are performing artifact releases -->
+            <distributionManagement>
+                <repository>
+                    <id>internalMavenReleaseRepository</id>
+                    <name>Internal Maven Release Repository</name>
+                    <url>${releases.distribution.url}</url>
+                </repository>
+            </distributionManagement>
+        </profile>
+        <profile>
+            <id>apigee-build-bundle</id>
+            <build>
+                <plugins>
+                    <!-- Use the maven dependency plugin to download and unpack the Common proxy configuration -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <version>${maven.dependency.plugin}</version>
+                        <executions>
+                            <execution>
+                                <id>copy</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>unpack</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>${apigee.common.policies.groupId}</groupId>
+                                            <artifactId>${apigee.common.policies.artifactId}</artifactId>
+                                            <version>${common.apigee.policies.version}</version>
+                                            <outputDirectory>${common.apigee.policies.outputdir}</outputDirectory>
+                                            <destFileName>${apigee.common.policies.artifactId}.jar</destFileName>
+                                        </artifactItem>
+                                    </artifactItems>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>io.apigee.build-tools.enterprise4g</groupId>
+                        <artifactId>proxy-dependency-maven-plugin</artifactId>
+                        <version>2.1.0</version>
+                        <executions>
+                            <execution>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>resolve</goal>
+                                </goals>
+                                <configuration>
+                                    <proxySrcDir>${project.basedir}/src/gateway</proxySrcDir>
+                                    <proxyDestDir>${project.basedir}/target/gateway</proxyDestDir>
+                                     <proxyRefs>
+                                        <proxyRef>${common.apigee.policies.outputdir}</proxyRef>
+                                    </proxyRefs>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <!--Step 3: Copies the output directory directly inside target-->
+                        <!--
+                        We use redundant execution strategies in this plugin.
+                        In the first execution, we copy the output of Step 2, directly to target directory. This allows the next set of plugins to find the "apiproxy" directory
+                        when all apigee profiles are used together (local development mode)
+
+                        In the second execution, we copy the output of step 2, to /target/classes, so that it's included in the maven jar by default without requiring custom
+                        configurations in the maven jar plugin
+
+                        While there are alternate ways to approach this behavior using profiles, having multiple "executions" only adds to redundant directories while
+                        keeping configuration "simpler"
+                        -->
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>3.0.1</version>
+                        <executions>
+ 							<!-- This execution strategy is helpful  when a developer wants to run all apigee related profiles in a single command-->
+                            <execution>
+                                <id>copy-transformed-apigee-resources</id>
+                                <phase>prepare-package</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <resources>
+                                        <resource>
+                                            <directory>./target/gateway/</directory>
+                                        </resource>
+                                    </resources>
+                                    <outputDirectory>./target/</outputDirectory>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>apigee-config-bundle</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>io.apigee.build-tools.enterprise4g</groupId>
+                        <artifactId>apigee-edge-maven-plugin</artifactId>
+                        <version>1.1.5</version>
+                        <executions>
+                            <execution>
+                                <id>configure-bundle</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>configure</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>apigee-deploy-bundle</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.apigee.edge.config</groupId>
+                        <artifactId>apigee-config-maven-plugin</artifactId>
+                        <version>1.0</version>
+                        <executions>
+                            <execution>
+                                <id>create-config-cache</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>caches</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>create-config-targetserver</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>targetservers</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>create-config-apiproduct</id>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>apiproducts</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>create-config-developer</id>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>developers</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>create-config-app</id>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>apps</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>io.apigee.build-tools.enterprise4g</groupId>
+                        <artifactId>apigee-edge-maven-plugin</artifactId>
+                        <version>1.1.0</version>
+                        <executions>
+                            <execution>
+                                <id>deploy-bundle</id>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>deploy</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>      
+        <profile>
+            <id>apigee-build-sharedflow-bundle</id>
+            <properties>
+                <apigee.apitype>sharedflow</apigee.apitype> <!-- This is only for Shared Flows. Not required for deploying proxy -->
+            </properties>
+            <build>
+                <plugins>
+                    <!-- Use the maven dependency plugin to download and unpack the Common proxy configuration -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <version>${maven.dependency.plugin}</version>
+                        <executions>
+                            <execution>
+                                <id>copy</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>unpack</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>${apigee.common.policies.groupId}</groupId>
+                                            <artifactId>${apigee.common.policies.artifactId}</artifactId>
+                                            <version>${common.apigee.policies.version}</version>
+                                            <outputDirectory>${common.apigee.policies.outputdir}</outputDirectory>
+                                            <destFileName>${apigee.common.policies.artifactId}.jar</destFileName>
+                                        </artifactItem>
+                                    </artifactItems>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>io.apigee.build-tools.enterprise4g</groupId>
+                        <artifactId>proxy-dependency-maven-plugin</artifactId>
+                        <version>2.1.0</version>
+                        <executions>
+                            <execution>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>resolve</goal>
+                                </goals>
+                                <configuration>
+                                    <proxySrcDir>${project.basedir}/src/sharedflowbundle</proxySrcDir>
+                                    <proxyDestDir>${project.basedir}/target/sharedflowbundle</proxyDestDir>
+                                     <proxyRefs>
+                                        <proxyRef>${common.apigee.policies.outputdir}</proxyRef>
+                                    </proxyRefs>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <!--Step 3: Copies the output directory directly inside target-->
+                        <!--
+                        We use redundant execution strategies in this plugin.
+                        In the first execution, we copy the output of Step 2, directly to target directory. This allows the next set of plugins to find the "apiproxy" directory
+                        when all apigee profiles are used together (local development mode)
+
+                        In the second execution, we copy the output of step 2, to /target/classes, so that it's included in the maven jar by default without requiring custom
+                        configurations in the maven jar plugin
+
+                        While there are alternate ways to approach this behavior using profiles, having multiple "executions" only adds to redundant directories while
+                        keeping configuration "simpler"
+                        -->
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>3.0.1</version>
+                        <executions>
+                            <!-- This execution strategy is helpful  when a developer wants to run all apigee related profiles in a single command-->
+                            <execution>
+                                <id>copy-transformed-apigee-resources</id>
+                                <phase>prepare-package</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <resources>
+                                        <resource>
+                                            <directory>./target/sharedflowbundle/</directory>
+                                        </resource>
+                                    </resources>
+                                    <outputDirectory>./target/</outputDirectory>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>apigee-config-sharedflow-bundle</id>
+            <properties>
+                <apigee.apitype>sharedflow</apigee.apitype> <!-- This is only for Shared Flows. Not required for deploying proxy -->
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>io.apigee.build-tools.enterprise4g</groupId>
+                        <artifactId>apigee-edge-maven-plugin</artifactId>
+                        <version>1.1.5</version>
+                        <executions>
+                            <execution>
+                                <id>configure-bundle</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>configure</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>apigee-deploy-sharedflow-bundle</id>
+            <properties>
+                <apigee.apitype>sharedflow</apigee.apitype> <!-- This is only for Shared Flows. Not required for deploying proxy -->
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.apigee.edge.config</groupId>
+                        <artifactId>apigee-config-maven-plugin</artifactId>
+                        <version>1.0</version>
+                    </plugin>
+                    <plugin>
+                        <groupId>io.apigee.build-tools.enterprise4g</groupId>
+                        <artifactId>apigee-edge-maven-plugin</artifactId>
+                        <version>1.1.5</version>
+                        <executions>
+                            <execution>
+                                <id>deploy-bundle</id>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>deploy</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>      
+    </profiles>
+</project>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <Description>Generated SOAP to API proxyEnrollmentWebServiceEjbService</Description>
+    <FaultRules>
+        #GlobalProxyEndPointErrors#
+    </FaultRules>
+    <DefaultFaultRule name="all">
+		#SoapGlobalProxyEndPointDefaultErrors#
+	</DefaultFaultRule>
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <Name>WhilteListIP</Name>
+                <Condition>(request.header.Traffic == "twowayssl")</Condition>
+            </Step>
+            #SoapGlobalProxyEndPointPreFlow#
+            <Step>
+                <Name>ValidatePayload</Name>
+                <Condition>(request.verb = "POST" or request.verb = "PUT" or request.verb = "PATCH")</Condition>
+            </Step>
+            #SoapAuthenticationGlobalpolicies#
+            <Step>
+                <Name>appendSoapRequestHeaders</Name>
+            </Step>
+        </Request>
+        <Response/>
+    </PreFlow>
+    <PostFlow name="PostFlow"> 
+        <Request/>
+        <Response> 
+            <Step>
+                <Name>SWPSharedFlowProxyPostFlowGeneric</Name>
+            </Step>
+        </Response> 
+    </PostFlow>
+    <Flows>
+         <Flow name="executeEnrollment">
+            <Description>executeEnrollment</Description>
+             <Request>
+                <Step>
+                     <Name>AssignFlowCalloutVars</Name>
+                </Step>
+                <Step>
+                    <Name>SWPSharedFlowProxyFlowGeneric</Name>
+                </Step>
+             </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/") and (request.verb = "POST") and (operation = "executeEnrollment")</Condition>
+        </Flow>
+    #SoapGlobalUnknownResourceFlow#     
+    </Flows>
+    <HTTPProxyConnection>
+        <BasePath>/api/v1/swp/soap/enrollment</BasePath>
+        <Properties/>
+        <VirtualHost>sei-default</VirtualHost>
+        <VirtualHost>tdmz-default</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="noroute"/>
+</ProxyEndpoint>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AssignFlowCalloutVars">
+    <DisplayName>AssignFlowCalloutVars</DisplayName>
+    <Properties/>
+    <Properties/>
+    <AssignVariable>
+        <Name>targetpathsuffix</Name>
+        <Value>targetpathsuffixValue</Value>
+    </AssignVariable>
+	<AssignVariable>
+        <Name>Domain</Name>
+        <Value>wlsdomainValue</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>Environment</Name>
+        <Ref>verifyapikey.verify-Api-Key.environment</Ref>
+        <Value>XXX</Value>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

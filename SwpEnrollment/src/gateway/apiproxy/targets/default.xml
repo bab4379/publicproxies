@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TargetEndpoint name="default">
+     <Description>SOAP target</Description>
+     <FaultRules/>
+    <PreFlow name="PreFlow">
+        <Request>
+            #GlobalTargetEndpointPreFlowRequest#
+        </Request>
+        <Response />
+    </PreFlow>
+    <PostFlow name="PostFlow">
+        <Request />
+        <Response>
+            #GlobalTargetEndpointPostFlowResponse#
+        </Response>
+    </PostFlow>
+    <Flows />    
+    <HTTPTargetConnection>
+        <Properties />
+        <URL>http://seidevq02oawls02.gwpdev.seic.com:8003/EnrollmentWebServiceEjb/EnrollmentWebServiceEjbService/EnrollmentWebServiceEjbService</URL>
+    </HTTPTargetConnection>
+    <DefaultFaultRule name="DefaultFaultRule">
+        #GlobalTargetEndpointPostFlow#
+    </DefaultFaultRule>
+</TargetEndpoint>
