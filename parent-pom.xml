@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   
-  <groupId>com.ddisrupt.api.global.policy</groupId>
+  <groupId>com.api.global.policy</groupId>
   <artifactId>parent-pom</artifactId>
   <version>0.0.1-SNAPSHOT</version>  
   <packaging>pom</packaging>
@@ -20,7 +20,7 @@
      <maven.resources.plugin>3.0.1</maven.resources.plugin>
 
      <!-- Default encoding for all build plugins, avoiding OS specific encoding -->
-<!--     <repository.server.root>http://seidevimsart01.ctc.ddisrupt.com:8081/artifactory</repository.server.root>-->     
+     <repository.server.root>http://localhost:8040/artifactory</repository.server.root>     
      <repository.local.home>${HOME}/.m2/repository</repository.local.home>
      <repository.maven.central>http://repo1.maven.org/maven2</repository.maven.central>
      <releases.distribution.url>${repository.server.root}/api-artifacts</releases.distribution.url>
@@ -30,7 +30,7 @@
      
 
      <!-- Common properties for downloading the enterprise level reusable policies -->
-     <apigee.common.policies.groupId>com.ddisrupt.api.global.policy</apigee.common.policies.groupId>
+     <apigee.common.policies.groupId>com.api.global.policy</apigee.common.policies.groupId>
      <apigee.common.policies.artifactId>apigee-commons</apigee.common.policies.artifactId>
      <common.apigee.policies.version>0.0.1-SNAPSHOT</common.apigee.policies.version>
      <common.apigee.policies.outputdir>${project.build.directory}/apigee-commons</common.apigee.policies.outputdir>
@@ -262,10 +262,8 @@
                         We use redundant execution strategies in this plugin.
                         In the first execution, we copy the output of Step 2, directly to target directory. This allows the next set of plugins to find the "apiproxy" directory
                         when all apigee profiles are used together (local development mode)
-
                         In the second execution, we copy the output of step 2, to /target/classes, so that it's included in the maven jar by default without requiring custom
                         configurations in the maven jar plugin
-
                         While there are alternate ways to approach this behavior using profiles, having multiple "executions" only adds to redundant directories while
                         keeping configuration "simpler"
                         -->
@@ -301,7 +299,7 @@
                     <plugin>
                         <groupId>io.apigee.build-tools.enterprise4g</groupId>
                         <artifactId>apigee-edge-maven-plugin</artifactId>
-                        <version>1.1.5</version>
+                        <version>1.1.6</version>
                         <executions>
                             <execution>
                                 <id>configure-bundle</id>
@@ -364,7 +362,7 @@
                     <plugin>
                         <groupId>io.apigee.build-tools.enterprise4g</groupId>
                         <artifactId>apigee-edge-maven-plugin</artifactId>
-                        <version>1.1.0</version>
+                        <version>1.1.6</version>
                         <executions>
                             <execution>
                                 <id>deploy-bundle</id>
@@ -387,49 +385,8 @@
                 <plugins>
                     <!-- Use the maven dependency plugin to download and unpack the Common proxy configuration -->
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-dependency-plugin</artifactId>
-                        <version>${maven.dependency.plugin}</version>
-                        <executions>
-                            <execution>
-                                <id>copy</id>
-                                <phase>process-resources</phase>
-                                <goals>
-                                    <goal>unpack</goal>
-                                </goals>
-                                <configuration>
-                                    <artifactItems>
-                                        <artifactItem>
-                                            <groupId>${apigee.common.policies.groupId}</groupId>
-                                            <artifactId>${apigee.common.policies.artifactId}</artifactId>
-                                            <version>${common.apigee.policies.version}</version>
-                                            <outputDirectory>${common.apigee.policies.outputdir}</outputDirectory>
-                                            <destFileName>${apigee.common.policies.artifactId}.jar</destFileName>
-                                        </artifactItem>
-                                    </artifactItems>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>io.apigee.build-tools.enterprise4g</groupId>
-                        <artifactId>proxy-dependency-maven-plugin</artifactId>
-                        <version>2.1.0</version>
-                        <executions>
-                            <execution>
-                                <phase>process-resources</phase>
-                                <goals>
-                                    <goal>resolve</goal>
-                                </goals>
-                                <configuration>
-                                    <proxySrcDir>${project.basedir}/src/sharedflowbundle</proxySrcDir>
-                                    <proxyDestDir>${project.basedir}/target/sharedflowbundle</proxyDestDir>
-                                     <proxyRefs>
-                                        <proxyRef>${common.apigee.policies.outputdir}</proxyRef>
-                                    </proxyRefs>
-                                </configuration>
-                            </execution>
-                        </executions>
+                            <artifactId>maven-clean-plugin</artifactId>
+                            <version>2.5</version>
                     </plugin>
                     <plugin>
                         <!--Step 3: Copies the output directory directly inside target-->
@@ -437,10 +394,8 @@
                         We use redundant execution strategies in this plugin.
                         In the first execution, we copy the output of Step 2, directly to target directory. This allows the next set of plugins to find the "apiproxy" directory
                         when all apigee profiles are used together (local development mode)
-
                         In the second execution, we copy the output of step 2, to /target/classes, so that it's included in the maven jar by default without requiring custom
                         configurations in the maven jar plugin
-
                         While there are alternate ways to approach this behavior using profiles, having multiple "executions" only adds to redundant directories while
                         keeping configuration "simpler"
                         -->
@@ -458,10 +413,10 @@
                                 <configuration>
                                     <resources>
                                         <resource>
-                                            <directory>./target/sharedflowbundle/</directory>
+                                            <directory>sharedflowbundle</directory>
                                         </resource>
                                     </resources>
-                                    <outputDirectory>./target/</outputDirectory>
+                                    <outputDirectory>./target/sharedflowbundle</outputDirectory>
                                 </configuration>
                             </execution>
                         </executions>
@@ -479,7 +434,7 @@
                     <plugin>
                         <groupId>io.apigee.build-tools.enterprise4g</groupId>
                         <artifactId>apigee-edge-maven-plugin</artifactId>
-                        <version>1.1.5</version>
+                        <version>1.1.6</version>
                         <executions>
                             <execution>
                                 <id>configure-bundle</id>
@@ -508,7 +463,7 @@
                     <plugin>
                         <groupId>io.apigee.build-tools.enterprise4g</groupId>
                         <artifactId>apigee-edge-maven-plugin</artifactId>
-                        <version>1.1.5</version>
+                        <version>1.1.6</version>
                         <executions>
                             <execution>
                                 <id>deploy-bundle</id>
@@ -521,6 +476,6 @@
                     </plugin>
                 </plugins>
             </build>
-        </profile>      
+        </profile>       
     </profiles>
 </project>
